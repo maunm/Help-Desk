@@ -1,3 +1,9 @@
+# GIT Flow
+
++ master (Main - Final) [Only develop branch can be merge here]
+    <- develop (Development - Test) [Features branches can be merge here]
+        <-> feature/name (Tasks branches) [Create from develop and merge back to develop]
+
 # HelpDesk
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
