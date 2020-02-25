@@ -8,22 +8,43 @@ import { throwError } from 'rxjs';
 })
 export class AuthService {
 
-  baseURL = "https://help-desk-test.free.beeceptor.com/api";
+  baseURL = "http://gabrieln-001-site1.ftempurl.com/api";
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/x-www-form-urlencoded'
+    })
+  };
 
   constructor(private http: HttpClient) { }
 
-  // Http Headers.
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
+  loginSupporter(model: any) {
+    let email = model.inputEmailLogin;
+    let pass = model.inputPasswordLogin;
+    return this.http.get(this.baseURL + '/Supporter?email=' + email + '&pass=' + pass).pipe(
+      map((response: any) => {
+        if (response == 'User not found') {
+          throw new Error('Invalid user data.');
+        } else {
+          localStorage.setItem('user-id', response.Id);
+          localStorage.setItem('role', 'supporter');
+        }
+      }),
+      catchError(this.errorHandl)
+    );
   }
 
-  login(model: any) {
-    return this.http.post(this.baseURL + '/login', model, this.httpOptions).pipe(
+  registerSupporter(model: any) {
+    var data = 'Id=0';
+    data += '&Name=' + model.inputNameRegister;
+    data += '&password=' + model.inputPasswordRegister;
+    data += '&FirstSurname=' + model.inputFirstSurnameRegister;
+    data += '&SecondSurname=' + model.inputSecondSurnameRegister;
+    data += '&Email=' + model.inputEmailRegister;
+
+    return this.http.post(this.baseURL + '/Supporter', data, this.httpOptions).pipe(
       map((response: any) => {
         console.log(response);
-        localStorage.setItem('session-token', 'test-token');
       }),
       catchError(this.errorHandl)
     );

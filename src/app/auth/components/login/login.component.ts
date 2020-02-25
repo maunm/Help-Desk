@@ -17,10 +17,9 @@ export class LoginComponent implements OnInit {
   onSubmit(f: NgForm) {
     const loginObserver = {
       next: x => console.log('User login'),
-      error: err => console.log('Observer got a loging error'),
+      error: err => f.controls['inputEmailLogin'].setErrors({'incorrect': true}),
     };
-
-    this.authService.login(f.value).subscribe(loginObserver);
+    this.authService.loginSupporter(f.value).subscribe(loginObserver);
   }
 
 }
