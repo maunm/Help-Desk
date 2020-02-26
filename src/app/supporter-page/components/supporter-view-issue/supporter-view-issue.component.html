@@ -36,6 +36,7 @@
                         <div class="col-md-12 mb-2">
                             <div class="form-group">
                                 <select class="form-control" id="supporterSelect" name="supporterSelect" [(ngModel)]='supporter'>
+                                    <option value="none">Not Asignned</option>
                                     <option *ngFor='let supporter of supporterList' [value]="supporter.Id">{{ supporter.Name }}</option>
                                 </select>
                             </div>
@@ -46,6 +47,7 @@
                         <div class="col-md-12 mb-2">
                             <div class="form-group">
                                 <select class="form-control" id="supporterSelect" name="supporterSelect" [(ngModel)]='supervisor'>
+                                    <option value="none">Not Asignned</option>
                                     <option *ngFor='let supervisor of supervisorList' [value]="supervisor.Id">{{ supervisor.Name }}</option>
                                 </select>
                             </div>
