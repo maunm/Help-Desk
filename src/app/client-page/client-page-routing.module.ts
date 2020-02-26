@@ -7,15 +7,16 @@ import { NotesListComponent } from './components/notes-list/notes-list.component
 import { UpdateIssueComponent } from './components/update-issue/update-issue.component';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import { ViewIssueComponent } from './components/view-issue/view-issue.component';
+import { SessionGuard } from '../session.guard';
 
 const routes: Routes = [
-  { path: 'create-issue', component: CreateIssueComponent},
-  { path: 'create-note', component: CreateNoteComponent},
-  { path: 'issues-list', component: IssuesListComponent},
-  { path: 'notes-list', component: NotesListComponent},
-  { path: 'update-issue', component: UpdateIssueComponent},
-  { path: 'update-note', component: UpdateNoteComponent},
-  { path: 'view-ssue', component: ViewIssueComponent}
+  { path: 'create-issue', component: CreateIssueComponent, canActivate: [SessionGuard]},
+  { path: 'create-note', component: CreateNoteComponent, canActivate: [SessionGuard]},
+  { path: 'issues-list', component: IssuesListComponent, canActivate: [SessionGuard]},
+  { path: 'notes-list', component: NotesListComponent, canActivate: [SessionGuard]},
+  { path: 'update-issue', component: UpdateIssueComponent, canActivate: [SessionGuard]},
+  { path: 'update-note', component: UpdateNoteComponent, canActivate: [SessionGuard]},
+  { path: 'view-ssue', component: ViewIssueComponent, canActivate: [SessionGuard]}
 ];
 
 @NgModule({

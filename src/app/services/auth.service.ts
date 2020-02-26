@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
+import { Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   loginSupporter(model: any) {
     let email = model.inputEmailLogin;
@@ -34,6 +35,34 @@ export class AuthService {
     );
   }
 
+  userLoggedIn() {
+    return !!localStorage.getItem('user-id')
+  }
+
+  supporterLogout() {
+    localStorage.removeItem('user-id');
+    localStorage.removeItem('role');
+    this.router.navigate(['/supporter/login']).then(() => {
+      window.location.reload();
+    })
+  }
+
+  clientLogout() {
+    localStorage.removeItem('user-id');
+    localStorage.removeItem('role');
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload();
+    })
+  }
+
+  supervisorLogout() {
+    localStorage.removeItem('user-id');
+    localStorage.removeItem('role');
+    this.router.navigate(['/supervisor/login']).then(() => {
+      window.location.reload();
+    })
+  }
+
   registerSupporter(model: any) {
     var data = 'Id=0';
     data += '&Name=' + model.inputNameRegister;
@@ -41,6 +70,7 @@ export class AuthService {
     data += '&FirstSurname=' + model.inputFirstSurnameRegister;
     data += '&SecondSurname=' + model.inputSecondSurnameRegister;
     data += '&Email=' + model.inputEmailRegister;
+    data += '&Service1=' + model.inputServicesRegister;
 
     return this.http.post(this.baseURL + '/Supporter', data, this.httpOptions).pipe(
       map((response: any) => {
@@ -48,6 +78,34 @@ export class AuthService {
       }),
       catchError(this.errorHandl)
     );
+  }
+
+  getServices(): Observable<any> {
+    return this.http.get(this.baseURL + '/Service');
+  }
+
+  getIssues(): Observable<any> {
+    return this.http.get(this.baseURL + '/Issue');
+  }
+
+  getIssue(id): Observable<any> {
+    return this.http.get(this.baseURL + '/Issue/' + id);
+  }
+
+  getSupporter(id): Observable<any> {
+    return this.http.get(this.baseURL + '/Supporter/' + id);
+  }
+
+  getSupporters(): Observable<any> {
+    return this.http.get(this.baseURL + '/Supporter');
+  }
+
+  getSupervisor(id): Observable<any> {
+    return this.http.get(this.baseURL + '/Supervisor/' + id);
+  }
+
+  getSupervisors(): Observable<any> {
+    return this.http.get(this.baseURL + '/Supervisor');
   }
 
   // Error handling.

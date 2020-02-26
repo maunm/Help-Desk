@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { IssueObject } from 'src/app/classes/issueObject';
 
 @Component({
   selector: 'app-supporter-issues-list',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupporterIssuesListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
+
+  servicesList: IssueObject [];
 
   ngOnInit(): void {
+    this.authService.getIssues().subscribe(
+      data => {
+        this.servicesList = data;
+      }
+    );
   }
 
 }

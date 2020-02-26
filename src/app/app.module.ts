@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { ClientPageModule } from './client-page/client-page.module';
 import { SupporterPageModule } from './supporter-page/supporter-page.module';
+import { SessionGuard } from './session.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { SupporterPageModule } from './supporter-page/supporter-page.module';
   exports: [
     AppComponent
   ],
-  providers: [],
+  providers: [SessionGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

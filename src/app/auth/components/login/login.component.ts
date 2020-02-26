@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     const loginObserver = {
-      next: x => this.router.navigate(['supporter/issues-list']),
+      next: x => this.router.navigate(['supporter/issues-list']).then(() => {
+        window.location.reload();
+      }),
       error: err => f.controls['inputEmailLogin'].setErrors({'incorrect': true}),
     };
     this.authService.loginSupporter(f.value).subscribe(loginObserver);

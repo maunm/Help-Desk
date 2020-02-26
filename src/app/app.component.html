@@ -1,19 +1,54 @@
 
 
   <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top" >
     <div class="container">
       <a class="navbar-brand" href="index.html">Help Desk</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse" id="navbarResponsive" *ngIf="userId && userRole == 'client'">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/login'" routerLinkActive="active">Login</a>
+            <a class="nav-link" [routerLink]="'/issues'" routerLinkActive="active">My Issues</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/register'" routerLinkActive="active">Register</a>
+            <a class="nav-link" [routerLink]="'/create-issue'" routerLinkActive="active">Create Issue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" style="cursor: pointer;" (click)="authService.clientLogout()">Log Out</a>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive" *ngIf="userId && userRole == 'supporter'">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/supporter/issues-list'" routerLinkActive="active">Issues</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/register'" routerLinkActive="active">Create Issue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/register'" routerLinkActive="active">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" style="cursor: pointer;" (click)="authService.supporterLogout()">Log Out</a>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarResponsive" *ngIf="userId && userRole == 'supervisor'">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/supporter/issues-list'" routerLinkActive="active">Issues</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/register'" routerLinkActive="active">Create Issue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/register'" routerLinkActive="active">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" style="cursor: pointer;" (click)="authService.supervisorLogout()">Log Out</a>
           </li>
         </ul>
       </div>

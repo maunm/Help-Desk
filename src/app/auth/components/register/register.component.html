@@ -79,9 +79,7 @@
                     #inputServicesRegister="ngModel" 
                     id="inputServicesRegister"
                     required>
-                      <option value="s1">service 1</option>
-                      <option value="s2">service 2</option>
-                      <option value="s3">service 3</option>
+                      <option *ngFor='let service of servicesList' [value]="service.Id">{{ service.Name }}</option>
                     </select>
                   </div>
                 <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Register</button>
@@ -94,7 +92,7 @@
                 </div>
               </form>
               <br>
-              <a class="nav-link" [routerLink]="'/register'" routerLinkActive="active">Go back to log in</a>
+              <a class="nav-link" [routerLink]="'/supporter/login'" routerLinkActive="active">Go back to log in</a>
         </div>
     </div>
 </div>
