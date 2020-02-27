@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { SupportApiService } from 'src/app/services/support-api.service';
 import { IssueObject } from 'src/app/classes/issueObject';
 import { SupporterObject } from 'src/app/classes/supporterObject';
 import { SupervisorObject } from 'src/app/classes/supervisorObject';
@@ -21,35 +21,35 @@ export class SupporterViewIssueComponent implements OnInit {
   supervisor: string = null;
   supervisorList: SupervisorObject []
 
-  constructor(public authService: AuthService, private route: ActivatedRoute) { }
+  constructor(public supportApiService: SupportApiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     let issueId = parseInt(this.route.snapshot.paramMap.get('id'));
 
-    this.authService.getSupporters().subscribe(
+    this.supportApiService.getSupporters().subscribe(
       data => {
         this.supporterList = data;
       }
     );
 
-    this.authService.getSupervisors().subscribe(
+    this.supportApiService.getSupervisors().subscribe(
       data => {
         this.supervisorList = data;
       }
     );
 
-    this.authService.getIssue(issueId).subscribe(
+    this.supportApiService.getIssue(issueId).subscribe(
       data => {
         this.date = data.RaportTimestamp;
         this.classification = data.Classification;
         this.status = data.Status;
 
-        this.authService.getSupporter(data.SupporterId).subscribe(
+        this.supportApiService.getSupporter(data.SupporterId).subscribe(
           data => {
             this.supporter = data.Id;
           }
         );
-        this.authService.getSupervisor(data.SupervisorId).subscribe(
+        this.supportApiService.getSupervisor(data.SupervisorId).subscribe(
           data => {
             this.supervisor = data.Id;
           }

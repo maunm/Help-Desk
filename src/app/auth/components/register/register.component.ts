@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { SupportApiService } from 'src/app/services/support-api.service';
 import { ServiceObject } from 'src/app/classes/serviceObject';
 
 @Component({
@@ -10,13 +10,13 @@ import { ServiceObject } from 'src/app/classes/serviceObject';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public supportApiService: SupportApiService) { }
 
   msg: string = null;
   servicesList: ServiceObject [];
 
   ngOnInit(): void {
-    this.authService.getServices().subscribe(
+    this.supportApiService.getServices().subscribe(
       data => {
         this.servicesList = data;
       }
@@ -28,6 +28,6 @@ export class RegisterComponent implements OnInit {
       next: x => this.msg = 'Registration successful!',
       error: err => f.controls['inputEmailRegister'].setErrors({'incorrect': true}),
     };
-    this.authService.registerSupporter(f.value).subscribe(registerObserver);
+    this.supportApiService.registerSupporter(f.value).subscribe(registerObserver);
   }
 }

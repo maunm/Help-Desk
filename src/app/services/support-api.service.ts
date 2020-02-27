@@ -7,7 +7,7 @@ import { Router} from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class SupportApiService {
 
   baseURL = "http://gabrieln-001-site1.ftempurl.com/api";
 

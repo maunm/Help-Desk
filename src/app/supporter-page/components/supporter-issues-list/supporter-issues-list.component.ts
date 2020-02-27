@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { SupportApiService } from 'src/app/services/support-api.service';
 import { IssueObject } from 'src/app/classes/issueObject';
 
 @Component({
@@ -10,12 +10,12 @@ import { IssueObject } from 'src/app/classes/issueObject';
 })
 export class SupporterIssuesListComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public supportApiService: SupportApiService) { }
 
   servicesList: IssueObject [];
 
   ngOnInit(): void {
-    this.authService.getIssues().subscribe(
+    this.supportApiService.getIssues().subscribe(
       data => {
         this.servicesList = data;
       }

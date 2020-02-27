@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { SupportApiService } from 'src/app/services/support-api.service';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +12,5 @@ export class AppComponent {
 
   title = 'help-desk';
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: SupportApiService) {}
 }

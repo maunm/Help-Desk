@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { SupportApiService } from 'src/app/services/support-api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private supportApiService: SupportApiService, private router: Router) { }
   canActivate(): boolean {
-    if (this.authService.userLoggedIn()) {
+    if (this.supportApiService.userLoggedIn()) {
       return true
     } else {
       this.router.navigate(['/login'])

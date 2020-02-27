@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { SupportApiService } from 'src/app/services/support-api.service';
 import { Router} from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private supportApiService: SupportApiService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
       }),
       error: err => f.controls['inputEmailLogin'].setErrors({'incorrect': true}),
     };
-    this.authService.loginSupporter(f.value).subscribe(loginObserver);
+    this.supportApiService.loginSupporter(f.value).subscribe(loginObserver);
   }
 
 }
