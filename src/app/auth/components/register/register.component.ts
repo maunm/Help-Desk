@@ -25,9 +25,20 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     const registerObserver = {
-      next: x => this.msg = 'Registration successful!',
+      next: x => this.successAction(f),
       error: err => f.controls['inputEmailRegister'].setErrors({'incorrect': true}),
     };
     this.supportApiService.registerSupporter(f.value).subscribe(registerObserver);
+  }
+
+  successAction(f){
+    this.msg = 'Registration successful!';
+    // Clear the form values.
+    f.controls['inputNameRegister'].setValue('');
+    f.controls['inputFirstSurnameRegister'].setValue('');
+    f.controls['inputSecondSurnameRegister'].setValue('');
+    f.controls['inputEmailRegister'].setValue('');
+    f.controls['inputPasswordRegister'].setValue('');
+    f.controls['inputServicesRegister'].setValue('');
   }
 }

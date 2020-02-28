@@ -26,10 +26,7 @@
             <a class="nav-link" [routerLink]="'/supporter/issues-list'" routerLinkActive="active">Issues</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/register'" routerLinkActive="active">Create Issue</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/register'" routerLinkActive="active">Services</a>
+            <a class="nav-link" [routerLink]="'/supporter/services-list'" routerLinkActive="active">Services</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" style="cursor: pointer;" (click)="authService.supporterLogout()">Log Out</a>
@@ -39,13 +36,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive" *ngIf="userId && userRole == 'supervisor'">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/supporter/issues-list'" routerLinkActive="active">Issues</a>
+            <a class="nav-link" [routerLink]="'/supervisor/issues-list'" routerLinkActive="active">Issues</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/register'" routerLinkActive="active">Create Issue</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/register'" routerLinkActive="active">Services</a>
+            <a class="nav-link" [routerLink]="'/supervisor/services-list'" routerLinkActive="active">Services</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" style="cursor: pointer;" (click)="authService.supervisorLogout()">Log Out</a>
