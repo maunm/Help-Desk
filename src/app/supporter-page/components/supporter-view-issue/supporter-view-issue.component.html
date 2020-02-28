@@ -1,0 +1,60 @@
+<div class="row extra-margins">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <h1>Issue title</h1>
+        </div>
+        <br>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Client Description</h3>
+                            <p>Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final</p>
+                        </div>
+                        <br><br>
+                        <div class="col-md-12">
+                            <h4>Comments</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12"><b>Reported At</b></div>
+                        <div class="col-md-12 mb-2">{{ date | date:'shortDate' }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><b>Classification</b></div>
+                        <div class="col-md-12 mb-2">{{ classification != null ? classification : 'Not specified' }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><b>Status</b></div>
+                        <div class="col-md-12 mb-2">{{ status }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><b>Supporter asignned</b></div>
+                        <div class="col-md-12 mb-2">
+                            <div class="form-group">
+                                <select class="form-control" id="supporterSelect" name="supporterSelect" [(ngModel)]='supporter'>
+                                    <option value="none">Not Asignned</option>
+                                    <option *ngFor='let supporter of supporterList' [value]="supporter.Id">{{ supporter.Name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><b>Supervisor</b></div>
+                        <div class="col-md-12 mb-2">
+                            <div class="form-group">
+                                <select class="form-control" id="supporterSelect" name="supporterSelect" [(ngModel)]='supervisor'>
+                                    <option value="none">Not Asignned</option>
+                                    <option *ngFor='let supervisor of supervisorList' [value]="supervisor.Id">{{ supervisor.Name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

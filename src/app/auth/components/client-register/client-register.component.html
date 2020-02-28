@@ -1,0 +1,125 @@
+<p>client-register works!</p>
+<div class="row register-comp">
+    <div class="col-md-9 col-centered">
+        <div class="col-md-12">
+            <h1>Register on Help Desk</h1>
+        </div>
+        <br>
+        <div class="col-md-12">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="form-row">
+                    <div class="form-group col-sm-12 col-md-4">
+                        <label for="inputNameRegister">Name*</label>
+                        <input 
+                        type="text" 
+                        class="form-control"
+                        name="inputNameRegister" 
+                        ngModel 
+                        #inputNameRegister="ngModel" 
+                        id="inputNameRegister" 
+                        placeholder="Name" r
+                        equired>
+                    </div>
+                    <div class="form-group col-sm-12 col-md-4">
+                        <label for="inputFirstSurnameRegister">First Surname*</label>
+                        <input 
+                        type="text" 
+                        class="form-control"
+                        name="inputFirstSurnameRegister" 
+                        ngModel 
+                        #inputFirstSurnameRegister="ngModel" 
+                        id="inputFirstSurnameRegister" 
+                        placeholder="First Surname" 
+                        requiered> 
+                    </div>
+                    <div class="form-group col-sm-12 col-md-4">
+                        <label for="inputSecondSurnameRegister">Second Surname*</label>
+                        <input 
+                        type="text" 
+                        class="form-control"
+                        name="inputSecondSurnameRegister" 
+                        ngModel 
+                        #inputSecondSurnameRegister="ngModel" 
+                        id="inputSecondSurnameRegister" 
+                        placeholder="Second Surname" 
+                        requiered> 
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label for="inputEmailRegister">Email*</label>
+                        <input 
+                        type="email" 
+                        class="form-control"
+                        name="inputEmailRegister" 
+                        ngModel 
+                        #inputEmailRegister="ngModel" 
+                        id="inputEmailRegister" 
+                        placeholder="Email" 
+                        required>
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label for="inputPasswordRegister">Password*</label>
+                        <input 
+                        type="password"
+                        class="form-control" 
+                        name="inputPasswordRegister" 
+                        ngModel 
+                        #inputPasswordRegister="ngModel" 
+                        id="inputPasswordRegister" 
+                        placeholder="Password"
+                        required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-12 col-md-12">
+                        <label for="inputAddressRegister">Address</label>
+                        <textarea 
+                        rows="3" 
+                        class="form-control"
+                        name="inputAddressRegister" 
+                        ngModel 
+                        #inputAddressRegister="ngModel" 
+                        id="inputAddressRegister" 
+                        placeholder="Address"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label for="inputPhoneRegister">Phone</label>
+                        <input 
+                        type="tel" 
+                        class="form-control"
+                        name="inputPhoneRegister" 
+                        ngModel 
+                        #inputEmailRegister="ngModel" 
+                        id="inputPhoneRegister" 
+                        placeholder="88888888">
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label for="inputPhone2Register">Second Phone</label>
+                        <input 
+                        type="tel"
+                        class="form-control" 
+                        name="inputPhone2Register" 
+                        ngModel 
+                        #inputPhone2Register="ngModel" 
+                        id="inputPhone2Register" 
+                        placeholder="88888888">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Register</button>
+                <br>
+                <div class="error" [hidden]="!inputEmailRegister.hasError('incorrect')">
+                  Error: Error incorrect information!
+                </div>
+                <div class="success">
+                    {{ msg }}
+                </div>
+              </form>
+              <br>
+              <a class="nav-link" [routerLink]="'/login'" routerLinkActive="active">Go back to log in</a>
+        </div>
+    </div>
+</div>
+

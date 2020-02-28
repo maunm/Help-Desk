@@ -1,0 +1,37 @@
+.extra-margins {
+    margin: 12% 0;
+}
+
+.descrip {
+    min-height: 200px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.error{
+    color: red;
+}
+
+.success {
+    color: green;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.comment {
+    padding: 18px 0;
+    border-bottom: 1px solid grey;
+    
+    .user-name {
+        font-weight: bold;
+    }
+
+    .comment-date {
+        float: right;
+        font-size: 12px;
+        color: gray;
+    }
+}

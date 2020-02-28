@@ -1,0 +1,40 @@
+
+<div class="row extra-margins">
+  <div class="col-md-12">
+      <div class="col-md-12">
+          <h1>My Issues list</h1>
+      </div>
+      <br>
+      <div class="col-md-12">
+          <table 
+              class="table"
+              id="issues-list-table"
+              data-toggle="table"
+              data-pagination="true">
+              <thead>
+                <tr>
+                  <th scope="col">Report #</th>
+                  <th scope="col">Reported Date</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Services</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Operations</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let issue of issuesList">
+                  <th scope="row">{{ issue.reportNumber }}</th>
+                  <td>{{ issue.registedtimestamp }}</td>
+                  <td>{{ issue.description }}</td>
+                  <td>--</td>
+                  <td>{{ issue.status }}</td>
+                  <td>
+                      <a href="/view-issue/{{ issue.id }}" class="btn btn-info mb-1">View</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+  </div>
+</div>

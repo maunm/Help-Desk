@@ -1,0 +1,70 @@
+<div class="row extra-margins">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <h1>Create new issue</h1>
+        </div>
+        <br>
+        <div class="col-md-12">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="form-row">
+                    <div class="form-group col-sm-12">
+                        <label for="descriptionIssue">Description*</label>
+                        <textarea 
+                        rows="5" 
+                        class="form-control"
+                        name="descriptionIssue" 
+                        ngModel 
+                        #descriptionIssue="ngModel" 
+                        id="descriptionIssue"
+                        required></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-12">
+                        <label for="phoneIssue">Phone</label>
+                        <input 
+                        type="tel" 
+                        class="form-control" 
+                        name="phoneIssue" 
+                        ngModel 
+                        #phoneIssue="ngModel" 
+                        id="phoneIssue" 
+                        placeholder="Phone">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-12">
+                        <label for="emailIssue">Reference Email</label>
+                        <input 
+                        type="email" 
+                        class="form-control"
+                        name="emailIssue" 
+                        ngModel 
+                        #emailIssue="ngModel" 
+                        id="emailIssue" 
+                        placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="addressIssue">Reference Address</label>
+                    <textarea 
+                    rows="2" 
+                    class="form-control" 
+                    name="addressIssue" 
+                    ngModel 
+                    #addressIssue="ngModel" 
+                    id="addressIssue" 
+                    placeholder="Address"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Save</button>
+                <br>
+                <div class="error" [hidden]="!descriptionIssue.hasError('incorrect')">
+                    Error: Error incorrect information!
+                </div>
+                <div class="success">
+                    {{ msg }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
