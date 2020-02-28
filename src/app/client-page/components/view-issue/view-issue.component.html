@@ -1,1 +1,75 @@
-<p>view-issue works!</p>
+<div class="row extra-margins">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <h1>Issue title</h1>
+        </div>
+        <br>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12 descrip">
+                            <h3>Issue Description</h3>
+                            <p>{{ description }}</p>
+                        </div>
+                        <br><br>
+                        <div class="col-md-12">
+                            <h4>Comments</h4>
+                            <hr>
+                            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12">
+                                        <label for="commentIssue">Add comments to this issue</label>
+                                        <textarea 
+                                        rows="5"
+                                        class="form-control"
+                                        name="commentIssue" 
+                                        ngModel 
+                                        #commentIssue="ngModel" 
+                                        id="commentIssue"
+                                        required></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Add Comment</button>
+                                <br>
+                                <div class="error" [hidden]="!commentIssue.hasError('incorrect')">
+                                    Error: Error incorrect information!
+                                </div>
+                                <div class="success">
+                                    {{ msg }}
+                                </div>
+                            </form>
+                            <hr>
+                            <h5>All Comments</h5>
+                            <div class="comments-list">
+                                <div class="comment" *ngFor="let comment of commentList">
+                                    <div class="user-name">{{ comment.issue.user.id == userid ? 'You' : comment.issue.user.name }}:</div>
+                                    <div>{{ comment.description }}</div>
+                                    <div class="comment-date">{{ comment.timestamp }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12"><b>Issue Number</b></div>
+                        <div class="col-md-12 mb-2">{{ reportNumber }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><b>Reported At</b></div>
+                        <div class="col-md-12 mb-2">{{ date | date:'shortDate' }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><b>Status</b></div>
+                        <div class="col-md-12 mb-2">{{ status }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><b>Reported Phone</b></div>
+                        <div class="col-md-12 mb-2">{{ phone }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

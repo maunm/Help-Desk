@@ -56,10 +56,7 @@ export class ClientApiService {
   }
 
   createIssueClient(model: any) {
-    var today = new Date();
-    var date = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date + ' ' + time;
+    var dateTime = this.getCurrentTime();
 
     let data = {
       "address": model.addressIssue,
@@ -78,6 +75,42 @@ export class ClientApiService {
       }),
       catchError(this.errorHandl)
     );
+  }
+
+  createCommentClient(model: any, issueId) {
+    var dateTime = this.getCurrentTime();
+    let data = {
+      "description": model.commentIssue,
+      "issueid": issueId,
+      "timestamp": dateTime,
+    };
+    
+    return this.http.post(this.baseURL + 'comments/', data, this.httpOptions).pipe(
+      map((response: any) => {
+        console.log(response);
+      }),
+      catchError(this.errorHandl)
+    );
+  }
+
+  getComments(): Observable<any> {
+    return this.http.get(this.baseURL + 'comments/');
+  }
+
+  getIssues(): Observable<any> {
+    return this.http.get(this.baseURL + 'issues/');
+  }
+
+  getIssue(id): Observable<any> {
+    return this.http.get(this.baseURL + 'issues/' + id);
+  }
+
+  getCurrentTime() {
+    var today = new Date();
+    var date = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date + ' ' + time;
+    return dateTime;
   }
 
   // Error handling.

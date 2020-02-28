@@ -12,12 +12,12 @@ export class SupporterIssuesListComponent implements OnInit {
 
   constructor(public supportApiService: SupportApiService) { }
 
-  servicesList: IssueObject [];
+  issuesList: IssueObject [];
 
   ngOnInit(): void {
     this.supportApiService.getIssues().subscribe(
       data => {
-        this.servicesList = data;
+        this.issuesList = data;
       }
     );
   }

@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'notes-list', component: NotesListComponent, canActivate: [SessionGuard]},
   { path: 'update-issue', component: UpdateIssueComponent, canActivate: [SessionGuard]},
   { path: 'update-note', component: UpdateNoteComponent, canActivate: [SessionGuard]},
-  { path: 'view-ssue', component: ViewIssueComponent, canActivate: [SessionGuard]}
+  { path: 'view-issue/:id', component: ViewIssueComponent, canActivate: [SessionGuard]}
 ];
 
 @NgModule({
